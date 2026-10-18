@@ -1,0 +1,44 @@
+[project]
+name = "theory-craFFT"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "gspread>=6.2.1",
+    "gspread-formatting>=1.2.1",
+    "mypy>=2.3.0",
+    "pandas>=3.0.5",
+    "python-dotenv>=1.2.2",
+    "requests>=2.34.2",
+]
+
+[project.scripts]
+theory-crafft = "theory_crafft.main:main"
+reset = "theory_crafft.sheet_utils:reset_sheet"
+dump-rules = "theory_crafft.sheet_utils:dump_rules"
+dump-cell-format = "theory_crafft.sheet_utils:dump_cell_format"
+
+[build-system]
+requires = ["uv_build>=0.12.1,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pandas-stubs>=3.0.5.260730",
+    "ruff>=0.16.1",
+]
+
+[tool.mypy]
+exclude = [
+    'venv',
+    '\.venv',
+    'node_modules',
+    'build',
+    'dist'
+]
+
+[tool.uv.workspace]
+members = [
+    "CAPS-test",
+]
